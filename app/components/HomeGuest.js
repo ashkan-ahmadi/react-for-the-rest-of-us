@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Page from './Page'
+import Axios from 'axios'
 
 const HomeGuest = () => {
+
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      await Axios.post(
+        'http://localhost:8080/register',
+        {
+          username: username,
+          email: email,
+          password: password
+        }
+      )
+      // since your key and value are the same you could just remove and use 1 but i'm keeping it like this
+      console.log('User successfully created');
+    } catch (e) {
+      console.log(e.response.data)
+    }
+  }
+
   return (
     <Page title="Welcome!" wide={true}>
       <div className="row align-items-center">
@@ -14,7 +38,7 @@ const HomeGuest = () => {
             internet again.</p>
         </div>
         <div className="col-lg-5 pl-lg-5 pb-3 py-lg-5">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username-register" className="text-muted mb-1">
                 <small>Username</small>
@@ -26,6 +50,9 @@ const HomeGuest = () => {
                 type="text"
                 placeholder="Pick a username"
                 autoComplete="off"
+                onChange={(e) => {
+                  setUsername(e.target.value)
+                }}
               />
             </div>
             <div className="form-group">
@@ -39,6 +66,9 @@ const HomeGuest = () => {
                 type="text"
                 placeholder="you@example.com"
                 autoComplete="off"
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                }}
               />
             </div>
             <div className="form-group">
@@ -51,6 +81,9 @@ const HomeGuest = () => {
                 className="form-control"
                 type="password"
                 placeholder="Create a password"
+                onChange={(e) => {
+                  setPassword(e.target.value)
+                }}
               />
             </div>
             <button

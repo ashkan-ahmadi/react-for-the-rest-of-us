@@ -1,0 +1,8 @@
+user: mainUser
+password: 5MYGgfnIcCFjkOVc
+connection sring:
+
+mongodb+srv://mainUser:<password>@cluster0.fzcxu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+
+mongodb+srv://mainUser:5MYGgfnIcCFjkOVc@cluster0.fzcxu.mongodb.net/ReactCourse?retryWrites=true&w=majority
