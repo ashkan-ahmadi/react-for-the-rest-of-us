@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import Axios from 'axios'
+import axios from 'axios'
 
 const HeaderLoggedOut = (props) => {
   const [username, setUsername] = useState()
@@ -9,8 +9,8 @@ const HeaderLoggedOut = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await Axios.post(
-        'http://localhost:8080/login',
+      const response = await axios.post(
+        '/login',
         {
           username: username,
           password: password

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Page from './Page'
-import Axios from 'axios'
+import axios from 'axios'
 
 const HomeGuest = () => {
 
@@ -11,8 +11,8 @@ const HomeGuest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await Axios.post(
-        'http://localhost:8080/register',
+      await axios.post(
+        '/register',
         {
           username: username,
           email: email,
